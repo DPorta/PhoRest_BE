@@ -40,7 +40,7 @@ def show_base64():
 
 @app.route('/')
 def index():
-    retrun jsonify({"Test":"Hola"})
+    return jsonify({"Test":"Hola"})
 
 
 if __name__ == '__main__':
