@@ -38,6 +38,10 @@ def show_base64():
     base64BW=base64.b64encode(imageBW)
     return jsonify({'status': 'base64 recibida correctamente', 'base64': base64img, 'base64P':base64BW})
 
+@app.route('/')
+def index():
+    retrun jsonify({"Test":"Hola"})
+
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(debug=True, port=os.getenv("PORT", default=5000))
