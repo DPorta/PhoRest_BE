@@ -32,11 +32,12 @@ def convert_image():
 def show_base64():
     base64img = request.form['imageb64']
     #print("BASE 64 ->", base64)
-    decoded_string = base64.b64decode(base64img)
-    imageBW = Image.open(io.BytesIO(decoded_string)).convert('L')
+    #decoded_string = base64.b64decode(base64img)
+    #imageBW = Image.open(io.BytesIO(decoded_string)).convert('L')
     #image.show()
-    base64BW=base64.b64encode(imageBW)
-    return jsonify({'status': 'base64 recibida correctamente', 'base64': base64img, 'base64P':base64BW})
+    #base64BW=base64.b64encode(imageBW)
+    #return jsonify({'status': 'base64 recibida correctamente', 'base64': base64img, 'base64P':base64BW})
+    return jsonify({'status': 'base64 recibida correctamente', 'base64': base64img})
 
 @app.route('/')
 def index():
