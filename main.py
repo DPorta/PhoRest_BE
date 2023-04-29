@@ -30,14 +30,21 @@ def convert_image():
 
 @app.route('/getbase64', methods=['POST'])
 def show_base64():
+    # Decodificar la cadena de base64 a una imagen
     base64img = request.form['imageb64']
-    #print("BASE 64 ->", base64)
-    #decoded_string = base64.b64decode(base64img)
-    #imageBW = Image.open(io.BytesIO(decoded_string)).convert('L')
-    #image.show()
-    #base64BW=base64.b64encode(imageBW)
-    #return jsonify({'status': 'base64 recibida correctamente', 'base64': base64img, 'base64P':base64BW})
-    return jsonify({'status': 'base64 recibida correctamente', 'base64': base64img})
+    # print("11111111111111 BASE 64 RECEIVED->", base64img)
+    decoded_string = base64.b64decode(base64img)
+    # print("22222222222222 BASE 64 Decoded ->", decoded_string)
+    # Convertir la imagen a escala de grises
+    imageBW = Image.open(io.BytesIO(decoded_string)).convert('L')
+    # print("333333333333 Image BW CODE->", imageBW)
+    # Codificar la imagen en base64 nuevamente
+    bufferedImg = io.BytesIO()
+    imageBW.save(bufferedImg, format="JPEG")
+    base64BW = base64.b64encode(bufferedImg.getvalue()).decode('latin-1')
+    # print("4444444444444 imagep b64->", base64BW)
+    return jsonify({'status': 'base64 recibida correctamente', 'base64': base64img, 'base64P': base64BW})
+    # return jsonify({'status': 'base64 recibida correctamente', 'base64': base64img})
 
 @app.route('/')
 def index():
