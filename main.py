@@ -29,7 +29,7 @@ def show_base64():
     imageBWresized.save(bufferedImg, format="JPEG")
     base64BW = base64.b64encode(bufferedImg.getvalue()).decode('latin-1')
 
-    return jsonify({'status': 'base64 recibida correctamente', 'base64': base64img, 'base64P': base64BW, 'clase': result_casiffier})
+    return jsonify({'status': 'base64 recibida correctamente', 'base64': base64img, 'base64P': base64BW, 'imageResult': result_casiffier})
 
 @app.route('/')
 def index():
