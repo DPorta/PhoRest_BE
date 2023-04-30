@@ -10,7 +10,7 @@ def clasiffier_CNN_predict(file):
         classes.append(key)
 
     model_h5_path = 'model_inception.h5'
-    model_new = load_model(model_h5_path, compile=False)
+    model_new = load_model(model_h5_path)
 
     #img_ = load_img(file, target_size=(512, 512))
     img_array = img_to_array(file)
