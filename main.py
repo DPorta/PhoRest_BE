@@ -5,7 +5,7 @@ import tensorflow as tf
 import io
 import base64
 import os
-
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 app = Flask(__name__)
 
 @app.route('/getbase64', methods=['POST'])
