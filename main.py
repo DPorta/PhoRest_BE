@@ -1,13 +1,9 @@
 from flask import Flask, request, jsonify
 from PIL import Image
 from classifier import clasiffier_CNN_predict
-import tensorflow as tf
 import io
 import base64
 import os
-
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-tf.config.set_visible_devices([],'GPU')
 
 app = Flask(__name__)
 
