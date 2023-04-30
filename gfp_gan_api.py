@@ -9,6 +9,5 @@ def predict_gfpgan_image(filename):
         input={"img": open(filename, "rb")}
     )
 
-    #print(output)
     return output
 
