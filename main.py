@@ -36,13 +36,13 @@ def show_file_name():
     #Enviar PIL Object al clasificador
     result_casiffier = clasiffier_CNN_predict(imgPILresized)
 
-    if(result_casiffier == "Imágen Borrosa"):
+    if(result_casiffier == "Imagen Borrosa"):
         # Enviar filepath to gfp-gan api
         predicted_gfpgan_image_url = predict_gfpgan_image(full_file_name)
 
         # convert url_gfp_gan_output to base64
         base64_predicted_gfpgan = get_as_base64(predicted_gfpgan_image_url)
-    elif (result_casiffier == "Imágen Agrietada"):
+    elif (result_casiffier == "Imagen Agrietada"):
         # Enviar filepath to image_inpainting api
         predicted_inpainting_url = predict_image_inpainting(full_file_name)
 
