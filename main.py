@@ -42,12 +42,19 @@ def show_file_name():
 
         # convert url_gfp_gan_output to base64
         base64_predicted_gfpgan = get_as_base64(predicted_gfpgan_image_url)
+
+        # Imagen procesada para evitar enviar doble resultado por el json
+        finalImage = base64_predicted_gfpgan
+
     elif (result_casiffier == "Imagen Agrietada"):
         # Enviar filepath to image_inpainting api
         predicted_inpainting_url = predict_image_inpainting(full_file_name)
 
         # convert url_inpainting_output to base64
         base64_predicted_inpainting = get_as_base64(predicted_inpainting_url)
+
+        # Imagen procesada para evitar enviar doble resultado por el json
+        finalImage = base64_predicted_inpainting
     else:
         # Enviar filepath to image_inpainting api
         predicted_inpainting_url = predict_image_inpainting(full_file_name)
@@ -66,8 +73,10 @@ def show_file_name():
         # convert url_gfp_gan_output to base64
         base64_predicted_gfpgan = get_as_base64(predicted_gfpgan_image_url)
 
+        # Imagen procesada para evitar enviar doble resultado por el json
+        finalImage = base64_predicted_gfpgan
 
-    return jsonify({'status': 'base64 recibida correctamente', 'base64': img_b64, 'imageResult': result_casiffier, 'GFP-GAN': base64_predicted_gfpgan, 'Inpainting': base64_predicted_inpainting})
+    return jsonify({'imageResult': result_casiffier, 'finalImage': finalImage})
 
 
 @app.route('/')
