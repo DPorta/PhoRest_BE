@@ -17,3 +17,6 @@ def b64_2_img(data):
 
 def get_as_base64(url):
     return base64.b64encode(requests.get(url).content).decode('latin-1')
+
+def get_as_im(url):
+    return Image.open(BytesIO(requests.get(url).content))
